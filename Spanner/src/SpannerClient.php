@@ -89,7 +89,7 @@ class SpannerClient
     use LROTrait;
     use ValidateTrait;
 
-    const VERSION = '1.29.2';
+    const VERSION = '1.30.1';
 
     const FULL_CONTROL_SCOPE = 'https://www.googleapis.com/auth/spanner.data';
     const ADMIN_SCOPE = 'https://www.googleapis.com/auth/spanner.admin';
@@ -301,7 +301,7 @@ class SpannerClient
                     return $this->instanceConfiguration($config['name'], $config);
                 },
                 [$this->connection, 'listInstanceConfigs'],
-                ['projectId' => InstanceAdminClient::projectName($this->projectId)] + $options,
+                ['projectName' => InstanceAdminClient::projectName($this->projectId)] + $options,
                 [
                     'itemsKey' => 'instanceConfigs',
                     'resultLimit' => $resultLimit
@@ -431,7 +431,7 @@ class SpannerClient
                     return $this->instance($name, $instance);
                 },
                 [$this->connection, 'listInstances'],
-                ['projectId' => InstanceAdminClient::projectName($this->projectId)] + $options,
+                ['projectName' => InstanceAdminClient::projectName($this->projectId)] + $options,
                 [
                     'itemsKey' => 'instances',
                     'resultLimit' => $resultLimit
